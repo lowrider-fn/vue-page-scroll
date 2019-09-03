@@ -1,6 +1,6 @@
 # Vue page scroll [Example](https://lowrider-fn.github.io/vue-page-scroll/)
 
-##Initialisation
+## Initialisation
 ```html
 <template>
   <Vps :options="options"
