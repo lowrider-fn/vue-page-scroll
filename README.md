@@ -36,6 +36,7 @@ export default {
             global    : true,
             pagination: true,
             keyboard  : true,
+            beforeMove: true
         },
     }),
     methods: {
@@ -73,12 +74,13 @@ loop | Boolean | | Enable infinite page scrolling
 global | Boolean | Required if transform || keyboard true | Enable built-in setter global style (You can set custom settings)
 pagination | Boolean | | Enable pagination
 keyboard | Boolean | | Enable built-in keyboard slide turning (You can set custom settings)
+beforeMove | Boolean | | Enable built-in settings header and foter when slide turning (You can set custom settings)
 
 
 ## Events
 Name         | Description
 ------------|----------------------------------------------------------------------------------------------
-vpsBeforeMove | Before move slide event for custom handler turning slide if transform false
+vpsBeforeMove | Before move slide event for custom handler turning slide if transform false and custom settings style header and footer if beforeMove false
 vpsAfterMove | After move slide event
 vpsNavClick | Pagination click event 
 vpsReady | Vps ready event for custom settings global style if global false
