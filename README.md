@@ -1,5 +1,8 @@
 # Vue page scroll [Example](https://lowrider-fn.github.io/vue-page-scroll/)
 
+### This component can be imported both locally and globally. This works successfully with SSR. I wrote it to the specific needs of the project slightly expanding. If you find bugs or have suggestions please open a question.
+### This component is a beta version.
+
 ## Initialisation
 ```html
 <template>
@@ -85,3 +88,5 @@ vpsAfterMove | After move slide event
 vpsNavClick | Pagination click event 
 vpsReady | Vps ready event for custom settings global style if global false or settings start style header and footer if beforeMove false
 vpsDestroy | Vps destroy event for custom resetings global style if global false or resetings style header and footer if beforeMove false
+
+### This component is a beta version.
