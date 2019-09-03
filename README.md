@@ -60,10 +60,26 @@ export default {
 </script>
 ```
 ## Props
-Name | Type | Therd Header
------------- | --------------|----------------------------------------------------------------------------------------------
-Content from cell 1 | Content from cell 2 | Content from cell 3
-wrappers | String | All Vps wrappers tag or selector
-header| String | Header tag or selector
-footer| String | Header tag or selector
-section| String | Section tag or selector
+Name         | Type          | Required | Description
+------------|--------------|----------|------------------------------------------------------------------------------------
+wrappers | String | Required if global true | All Vps wrappers tag or selector
+header | String | Required if global true | Header tag or selector
+footer | String | Required if global true | Header tag or selector
+section | String | Required if global true | Section tag or selector
+easing | String | Required if transform true | Css transform prop
+animation | Number | Required if transform true | Css transform prop and time interval between animations
+transform | Boolean | | Enable built-in slide turning (You can set custom handler)
+loop | Boolean | | Enable infinite page scrolling
+global | Boolean | Required if transform || keyboard true | Enable built-in setter global style (You can set custom settings)
+pagination | Boolean | | Enable pagination
+keyboard | Boolean | | Enable built-in keyboard slide turning (You can set custom settings)
+
+
+## Events
+Name         | Description
+------------|----------------------------------------------------------------------------------------------
+vpsBeforeMove | Before move slide event for custom handler turning slide if transform false
+vpsAfterMove | After move slide event
+vpsNavClick | Pagination click event 
+vpsReady | Vps ready event for custom settings global style if global false
+vpsDestroy | Vps destroy event for custom reseting global style if global false
