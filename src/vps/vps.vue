@@ -69,8 +69,10 @@ export default {
             if (this.options.global) {
                 this.header = querySelector(this.options.header);
                 this.footer = querySelector(this.options.footer);
-                setCssText(this.footer, isVps ? footerHideStyles : '');
-                setCssText(this.header, isVps ? headerShowStyles : '');
+                if(this.options.beforeMove){
+                    setCssText(this.footer, isVps ? footerHideStyles : '');
+                    setCssText(this.header, isVps ? headerShowStyles : '');
+                }
                 const els = this.options.wrappers.map(selector => querySelector(selector));
                 els.forEach(el => setCssText(el, isVps ? hideScrollStyles : ''));
                 this.setSectionStyle(isVps);
@@ -96,7 +98,7 @@ export default {
             });
         },
         keydownHandler() {
-            if (this.options.keyboard) {
+            if (this.options.keyboard && this.options.transform) {
                 document.onkeydown = (e) => {
                     const tag        = e.target.tagName.toLowerCase();
                     const isNotField = tag !== 'input' && tag !== 'textarea';
@@ -151,9 +153,8 @@ export default {
             this.transformPage();
         },
         transformPage() {
-            this.$emit('vpsBeforeMove', this.currentIndex);
+            this.beforeMoveHandler(this.currentIndex);
             if (this.options.transform) {
-                this.beforeMoveHandler(this.currentIndex);
                 const { animation } = this.options;
                 const { easing }    = this.options;
                 const transformCSS  = `-webkit-transform: translate3d(0, ${this.position}%, 0);
@@ -170,10 +171,13 @@ export default {
             this.$emit('vpsAfterMove', this.currentIndex);
         },
         beforeMoveHandler(index) {
-            if (index > 0) setCssText(this.header, headerHideStyles);
-            else setCssText(this.header, headerShowStyles);
-            if (index === this.sections.length - 1) setCssText(this.footer, footerShowStyles);
-            else setCssText(this.footer, footerHideStyles);
+            this.$emit('vpsBeforeMove', this.currentIndex);
+            if(this.options.beforeMove){
+                if (index > 0) setCssText(this.header, headerHideStyles);
+                else setCssText(this.header, headerShowStyles);
+                if (index === this.sections.length - 1) setCssText(this.footer, footerShowStyles);
+                else setCssText(this.footer, footerHideStyles);
+            }
         },
         swipeEvents() {
             let startX;

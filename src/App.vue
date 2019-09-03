@@ -40,20 +40,18 @@ export default {
     },
     data: () => ({
         options: {
-            wrappers : ['html', 'body', '#app', 'main'],
-            header   : 'header',
-            footer   : 'footer',
-            section  : 'section',
-            transform: true,
-            // if trnsform true esing required
-            easing   : 'ease',
-
-            animation: 700,
-
-            loop      : true,
-            global    : true,
-            pagination: true,
-            keyboard  : true,
+            wrappers   : ['html', 'body', '#app', 'main'],
+            header     : 'header',
+            footer     : 'footer',
+            section    : 'section',
+            transform  : true,
+            easing     : 'ease',
+            animation  : 700,
+            beforeMove : true,
+            loop       : true,
+            global     : true,
+            pagination : true,
+            keyboard   : true,
         },
         sections: [
             {
