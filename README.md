@@ -64,8 +64,8 @@ export default {
 Name         | Type          | Required | Description
 ------------|--------------|----------|------------------------------------------------------------------------------------
 wrappers | String | Required if global true | All Vps wrappers tag or selector
-header | String | Required if global true | Header tag or selector
-footer | String | Required if global true | Header tag or selector
+header | String | Required if beforeMove true | Header tag or selector
+footer | String | Required if beforeMove true | Header tag or selector
 section | String | Required if global true | Section tag or selector
 easing | String | Required if transform true | Css transform prop
 animation | Number | Required if transform true | Css transform prop and time interval between animations
