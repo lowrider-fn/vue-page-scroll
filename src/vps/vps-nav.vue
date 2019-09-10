@@ -24,7 +24,7 @@ export default {
             required: true,
         },
         sections: {
-            type   : [Array, NodeList],
+            type   : Array,
             default: () => [],
         },
         currentIndex: {

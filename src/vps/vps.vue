@@ -9,7 +9,7 @@
         <VpsNav v-if='options.pagination'
                 :options="options"
                 :currentIndex="currentIndex"
-                :sections="sections"
+                :sections="Array.from(sections)"
                 @vpsNavClick="moveTo($event)"
         />
     </div>
@@ -17,7 +17,7 @@
 
 <script>
 import {
-    querySelectorAll, setCssText, querySelector, addClass, addEventListener, removeEventListener, removeClass,
+    setCssText,  addClass, removeClass,
 } from './library';
 
 import {
@@ -37,14 +37,16 @@ export default {
             required: true,
         },
     },
-    data: () => ({
-        lastAnimation: 0,
-        position     : 0,
-        currentIndex : 0,
-        sections     : [],
-        footer       : null,
-        header       : null,
-    }),
+    data() {
+        return {
+            lastAnimation: 0,
+            position     : 0,
+            currentIndex : 0,
+            sections     : [],
+            footer       : null,
+            header       : null,
+        };
+    },
     mounted() {
         this.vpsInit();
     },
@@ -67,27 +69,27 @@ export default {
         },
         setGlobalStyles(isVps) {
             if (this.options.global) {
-                this.header = querySelector(this.options.header);
-                this.footer = querySelector(this.options.footer);
-                if(this.options.beforeMove){
-                    setCssText(this.footer, isVps ? footerHideStyles : '');
-                    setCssText(this.header, isVps ? headerShowStyles : '');
+                this.header = document.querySelector(this.options.header);
+                this.footer = document.querySelector(this.options.footer);
+                if (this.options.beforeMove) {
+                    setCssText(this.footer, (isVps && footerHideStyles) || '');
+                    setCssText(this.header, (isVps && headerShowStyles) || '');
                 }
-                const els = this.options.wrappers.map(selector => querySelector(selector));
-                els.forEach(el => setCssText(el, isVps ? hideScrollStyles : ''));
+                const els = this.options.wrappers.map((selector) => document.querySelector(selector));
+                els.forEach((el) => setCssText(el, (isVps && hideScrollStyles) || ''));
                 this.setSectionStyle(isVps);
             }
         },
         setSectionStyle(isVps) {
-            this.sections = querySelectorAll(this.options.section);
+            this.sections = document.querySelectorAll(this.options.section);
             this.sections.forEach((section, i) => {
                 const headerHeight    = this.header.offsetHeight;
                 const footerHeight    = this.footer.offsetHeight;
                 const containerHeight = this.$refs.vps.offsetHeight;
                 const { style }       = section;
                 if (i === 0) {
-                    style.height    = isVps ? `${containerHeight - headerHeight}px` : '';
-                    style.marginTop = isVps ? `${headerHeight}px` : '';
+                    style.height    = (isVps && `${containerHeight - headerHeight}px`) || '';
+                    style.marginTop = (isVps && `${headerHeight}px`) || '';
                 }
                 if (i === this.sections.length - 1) {
                     style.height       = `${containerHeight - footerHeight}px`;
@@ -155,9 +157,8 @@ export default {
         transformPage() {
             this.beforeMoveHandler(this.currentIndex);
             if (this.options.transform) {
-                const { animation } = this.options;
-                const { easing }    = this.options;
-                const transformCSS  = `-webkit-transform: translate3d(0, ${this.position}%, 0);
+                const { animation, easing } = this.options;
+                const transformCSS          = `-webkit-transform: translate3d(0, ${this.position}%, 0);
                                 -webkit-transition: -webkit-transform ${animation}ms ${easing};
                                 -moz-transform: translate3d(0, ${this.position}%, 0);
                                 -moz-transition: -moz-transform ${animation}ms ${easing};
@@ -172,7 +173,7 @@ export default {
         },
         beforeMoveHandler(index) {
             this.$emit('vpsBeforeMove', this.currentIndex);
-            if(this.options.beforeMove){
+            if (this.options.beforeMove) {
                 if (index > 0) setCssText(this.header, headerHideStyles);
                 else setCssText(this.header, headerShowStyles);
                 if (index === this.sections.length - 1) setCssText(this.footer, footerShowStyles);
@@ -192,7 +193,7 @@ export default {
                     if (deltaY <= -50) this.moveUp(e);
 
                     if (Math.abs(deltaX) >= 50 || Math.abs(deltaY) >= 50) {
-                        removeEventListener('touchmove', touchmove);
+                        document.removeEventListener('touchmove', touchmove);
                     }
                 }
             };
@@ -201,10 +202,10 @@ export default {
                 if (touches && touches.length) {
                     startX = touches[0].pageX;
                     startY = touches[0].pageY;
-                    addEventListener('touchmove', touchmove);
+                    document.addEventListener('touchmove', touchmove);
                 }
             };
-            addEventListener('touchstart', touchstart);
+            document.addEventListener('touchstart', touchstart);
         },
     },
 };

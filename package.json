@@ -11,6 +11,12 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^3.11.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-align-assignments": "^1.1.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-vue": "^5.2.3",
     "vue-template-compiler": "^2.6.10"
   }
 }

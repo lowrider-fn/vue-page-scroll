@@ -38,52 +38,54 @@ export default {
     components: {
         Vps,
     },
-    data: () => ({
-        options: {
-            wrappers   : ['html', 'body', '#app', 'main'],
-            header     : 'header',
-            footer     : 'footer',
-            section    : 'section',
-            transform  : true,
-            easing     : 'ease',
-            animation  : 700,
-            beforeMove : true,
-            loop       : true,
-            global     : true,
-            pagination : true,
-            keyboard   : true,
-        },
-        sections: [
-            {
-                title: 'Section #1',
-                color: '#19bb4f',
-                text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    data() {
+        return {
+            options: {
+                wrappers  : ['html', 'body', '#app', 'main'],
+                header    : 'header',
+                footer    : 'footer',
+                section   : 'section',
+                transform : true,
+                easing    : 'ease',
+                animation : 700,
+                beforeMove: true,
+                loop      : true,
+                global    : true,
+                pagination: true,
+                keyboard  : true,
+            },
+            sections: [
+                {
+                    title: 'Section #1',
+                    color: '#19bb4f',
+                    text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Earum minima dicta officia! Laboriosam repellendus doloribus est asperiores mollitia vel iusto,
                     dolorum aliquam aliquid natus, incidunt voluptate nihil, explicabo quod dicta.`,
-            },
-            {
-                title: 'Section #2',
-                color: '#eb3c95',
-                text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                },
+                {
+                    title: 'Section #2',
+                    color: '#eb3c95',
+                    text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Earum minima dicta officia! Laboriosam repellendus doloribus est asperiores mollitia vel iusto,
                     dolorum aliquam aliquid natus, incidunt voluptate nihil, explicabo quod dicta.`,
-            },
-            {
-                title: 'Section #3',
-                color: '#f48333',
-                text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                },
+                {
+                    title: 'Section #3',
+                    color: '#f48333',
+                    text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Earum minima dicta officia! Laboriosam repellendus doloribus est asperiores mollitia vel iusto,
                     dolorum aliquam aliquid natus, incidunt voluptate nihil, explicabo quod dicta.`,
-            },
-            {
-                title: 'Section #4',
-                color: '#0bb5ad',
-                text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                },
+                {
+                    title: 'Section #4',
+                    color: '#0bb5ad',
+                    text : `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Earum minima dicta officia! Laboriosam repellendus doloribus est asperiores mollitia vel iusto,
                     dolorum aliquam aliquid natus, incidunt voluptate nihil, explicabo quod dicta.`,
-            },
-        ],
-    }),
+                },
+            ],
+        };
+    },
     methods: {
         vpsReadyHandler() {
             console.log('Vps ready');
