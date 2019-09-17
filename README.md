@@ -89,4 +89,4 @@ vpsNavClick | Pagination click event
 vpsReady | Vps ready event for custom settings global style if global false or settings start style header and footer if beforeMove false
 vpsDestroy | Vps destroy event for custom resetings global style if global false or resetings style header and footer if beforeMove false
 
-### This component is a beta version.
+
