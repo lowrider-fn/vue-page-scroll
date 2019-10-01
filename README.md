@@ -26,22 +26,24 @@ export default {
     components: {
         Vps,
     },
-    data: () => ({
-        options: {
-            wrappers  : ['html', 'body', '#app', 'main'],
-            header    : 'header',
-            footer    : 'footer',
-            section   : 'section',
-            transform : true,
-            easing    : 'ease',
-            animation : 700,
-            loop      : true,
-            global    : true,
-            pagination: true,
-            keyboard  : true,
-            beforeMove: true
-        },
-    }),
+    data(){
+        return{
+            options: {
+                wrappers  : ['html', 'body', '#app', 'main'],
+                header    : 'header',
+                footer    : 'footer',
+                section   : 'section',
+                transform : true,
+                easing    : 'ease',
+                animation : 700,
+                loop      : true,
+                global    : true,
+                pagination: true,
+                keyboard  : true,
+                beforeMove: true
+            },
+         }
+    },
     methods: {
         vpsReadyHandler() {
             console.log('Vps ready');
