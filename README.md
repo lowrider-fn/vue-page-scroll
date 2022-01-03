@@ -1,7 +1,6 @@
-# Vue page scroll [Example](https://lowrider-fn.github.io/vue-page-scroll/)
+# Vue page scroll. [VPS Example](https://lowrider-fn.github.io/vue-page-scroll/)
 
-### This component can be imported both locally and globally. This works successfully with SSR. I wrote it to the specific needs of the project slightly expanding. If you find bugs or have suggestions please open a question.
-### This component is a beta version.
+### This component can be imported both locally and globally. This works successfully with SSR.
 
 ## Initialisation
 ```html
